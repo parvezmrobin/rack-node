@@ -1,7 +1,7 @@
 {
   "name": "rack-node",
   "description": "write like human, search like computer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Parvez M Robin",
   "bin": {
     "rack": "./bin/run"

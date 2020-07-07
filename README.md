@@ -10,6 +10,7 @@ write like human, search like computer
 
 <!-- toc -->
 * [Usage](#usage)
+* [Copyright](#copyright)
 <!-- tocstop -->
 # Usage
 <!-- usage -->
@@ -37,7 +38,7 @@ Content: 0.5625
 ...
 
 $ rack (-v|--version|version)
-rack-node/1.0.1 win32-x64 node-v12.16.1
+rack-node/1.0.3 win32-x64 node-v12.16.1
 $ rack -h
 USAGE
   $ rack QUERY
@@ -49,3 +50,14 @@ OPTIONS
 
 ```
 <!-- usagestop -->
+
+# Copyright
+
+This module is primarily a JavaScript translation of the Rack Server Java implementation.
+Check [here](https://github.com/masud-technope/RACK-Server) to see original work.
+
+```
+M. Masudur Rahman, Chanchal K. Roy and David Lo, "RACK: Code Search in the IDE using Crowdsourced 
+Knowledge", In Proceeding of The 39th International Conference on Software Engineering (ICSE 2017), 
+pp. 51--54, Buenos Aires, Argentina, May, 2017
+```
