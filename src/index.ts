@@ -9,7 +9,12 @@ class RackNode extends Command {
     version: flags.version({ char: 'v' }),
     help: flags.help({ char: 'h' }),
     // flag with a value (-s, --score=VALUE)
-    score: flags.string({ char: 's', description: 'the scoring to order suggestion', default: 'all' }),
+    score: flags.string({
+      char: 's',
+      description: 'the scoring to order suggestion',
+      default: 'all',
+      options: ['kac', 'kkc', 'all'],
+    }),
   }
 
   static args = [{ name: 'query', required: true }]
