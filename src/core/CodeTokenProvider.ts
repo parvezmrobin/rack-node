@@ -5,6 +5,7 @@
  */
 
 import { stopWords, javaKeywords } from '../config/words.json';
+import * as snowball from 'node-snowball';
 
 export enum Score {
   KAC,
@@ -35,7 +36,9 @@ class CodeTokenProvider {
       .filter(token => !numRegExp.test(token))
       .filter(Boolean)
       .filter(token => !wordsToIgnore.includes(token));
-    return textTokens;
+
+    const stemmedTextTokens = snowball.stemword(textTokens, 'english');
+    return [...new Set(stemmedTextTokens)];
   }
 }
 
