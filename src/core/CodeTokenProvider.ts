@@ -6,6 +6,7 @@
 
 import { stopWords, javaKeywords } from '../config/words.json';
 import * as snowball from 'node-snowball';
+import ApiRepository from "./ApiRepository";
 
 export enum Score {
   KAC,
@@ -21,8 +22,9 @@ class CodeTokenProvider {
     this.query = this.decomposeQueryTerms(rawQuery);
   }
 
-  recommendApi(score = Score.ALL) {
-    return this.query;
+  async recommendApi(score = Score.ALL): Promise<string> {
+    const apis = await new ApiRepository(this.query).getApis();
+    return JSON.stringify(apis);
   }
 
   protected decomposeQueryTerms(rawQuery: string) {

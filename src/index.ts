@@ -23,7 +23,7 @@ class RackNode extends Command {
     this.log(`hello ${name} from .\\src\\index.ts`);
     if (args.query) {
       const rawQuery = args.query.substr('--query='.length);
-      this.log(new CodeTokenProvider(rawQuery).recommendApi().join(', '));
+      this.log(await new CodeTokenProvider(rawQuery).recommendApi());
     }
   }
 }
