@@ -1,7 +1,7 @@
 {
   "name": "rack-node",
   "description": "write like human, search like computer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Parvez M Robin",
   "bin": {
     "rack": "./bin/run"
@@ -51,7 +51,7 @@
   "repository": "parvezmrobin/rack-node",
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rimraf lib && tsc -b && oclif-dev readme && Xcopy /E /Y src\\database\\RACK-EMSE.db lib\\database\\RACK-EMSE.db",
+    "prepack": "rimraf lib && tsc -b && Xcopy /E /Y src\\database\\RACK-EMSE.db lib\\database\\RACK-EMSE.db",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
