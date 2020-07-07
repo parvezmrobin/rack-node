@@ -51,7 +51,7 @@
   "repository": "parvezmrobin/rack-node",
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rimraf lib && tsc -b && oclif-dev readme",
+    "prepack": "rimraf lib && tsc -b && oclif-dev readme && Xcopy /E /Y src\\database\\ lib\\database\\",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
