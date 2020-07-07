@@ -19,7 +19,7 @@ $ npm install -g rack-node
 $ rack COMMAND
 running command...
 $ rack (-v|--version|version)
-rack-node/0.0.0 win32-x64 node-v12.16.1
+rack-node/1.0.0 win32-x64 node-v12.16.1
 $ rack --help [COMMAND]
 USAGE
   $ rack COMMAND
