@@ -10,23 +10,42 @@ write like human, search like computer
 
 <!-- toc -->
 * [Usage](#usage)
-* [Commands](#commands)
 <!-- tocstop -->
 # Usage
 <!-- usage -->
-```sh-session
+
+```sh
 $ npm install -g rack-node
-$ rack COMMAND
-running command...
+
+$ rack --query="how to send email in Java"
+IOException: 0.8899051646791389
+Session: 0.8507142707028266
+MimeMessage: 0.7511904511713776
+File: 0.7406194353819655
+Object: 0.4976190976572451
+Content: 0.44785718789152057
+...
+
+$ rack --query="how to send email in Java" --score=kkc
+Message: 1
+IOException: 0.9375
+Session: 0.8125
+File: 0.7500000000000001
+MimeMessage: 0.6875
+Object: 0.625
+Content: 0.5625
+...
+
 $ rack (-v|--version|version)
 rack-node/1.0.1 win32-x64 node-v12.16.1
-$ rack --help [COMMAND]
+$ rack -h
 USAGE
-  $ rack COMMAND
-...
+  $ rack QUERY
+
+OPTIONS
+  -h, --help         show CLI help
+  -s, --score=score  [default: all] the scoring to order suggestion
+  -v, --version      show CLI version
+
 ```
 <!-- usagestop -->
-# Commands
-<!-- commands -->
-
-<!-- commandsstop -->
