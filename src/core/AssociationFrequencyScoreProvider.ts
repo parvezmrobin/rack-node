@@ -18,7 +18,8 @@ class AssociationFrequencyScoreProvider {
       for (let i = 0; i < apis.length; i++) {
         const api = apis[i];
         const score = 1 - (i / apis.length);
-        this.tokenScores.set(api, (this.tokenScores.get(api) || 0) + score);
+        const currentScore = this.tokenScores.get(api) || 0;
+        this.tokenScores.set(api, currentScore + score);
       }
     }
 

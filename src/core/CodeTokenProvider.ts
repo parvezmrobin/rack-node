@@ -35,7 +35,6 @@ class CodeTokenProvider {
     }
     const sortedTokenScores = [...this.tokenScores.entries()]
       .sort((a, b) => b[1] - a[1]);
-    console.log('sortedTokenScores', sortedTokenScores);
     return sortedTokenScores.map(([token, score]) => `${token}: ${score}`).join('\n');
   }
 
@@ -52,9 +51,7 @@ class CodeTokenProvider {
       .filter(token => !wordsToIgnore.includes(token));
 
     const stemmedTextTokens = snowball.stemword(textTokens, 'english');
-    // return [...new Set(stemmedTextTokens)];
-
-    return ['java', 'pars', 'html'];
+    return [...new Set(stemmedTextTokens)];
   }
 
   protected async calculateScores(score: Score) {
