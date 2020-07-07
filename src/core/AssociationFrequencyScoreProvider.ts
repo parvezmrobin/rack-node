@@ -5,23 +5,20 @@
  */
 
 class AssociationFrequencyScoreProvider {
-  private readonly tokenScores: Record<string, number>;
+  private readonly tokenScores: Map<string, number>;
 
-  constructor(private readonly tokenMap: Record<string, string[]>) {
-    this.tokenScores = {} as Record<string, number>;
-    for (const tokenMapKey in this.tokenMap) {
-      this.tokenScores[tokenMapKey] = 0;
-    }
+  constructor(private readonly tokenMap: Map<string, string[]>) {
+    this.tokenScores = new Map<string, number>();
   }
 
   getScore() {
-    for (const tokenMapKey in this.tokenMap) {
-      const apis = this.tokenMap[tokenMapKey];
+    for (const tokenMapKey of this.tokenMap.keys()) {
+      const apis = this.tokenMap.get(tokenMapKey) as string[];
 
       for (let i = 0; i < apis.length; i++) {
         const api = apis[i];
         const score = 1 - (i / apis.length);
-        this.tokenScores[api] += score;
+        this.tokenScores.set(api, (this.tokenScores.get(api) || 0) + score);
       }
     }
 

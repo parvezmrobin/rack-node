@@ -1,5 +1,5 @@
 import { Command, flags } from '@oclif/command';
-import CodeTokenProvider from './core/CodeTokenProvider';
+import CodeTokenProvider, { Score } from './core/CodeTokenProvider';
 
 class RackNode extends Command {
   static description = 'describe the command here'
@@ -23,7 +23,7 @@ class RackNode extends Command {
     this.log(`hello ${name} from .\\src\\index.ts`);
     if (args.query) {
       const rawQuery = args.query.substr('--query='.length);
-      this.log(await new CodeTokenProvider(rawQuery).recommendApi());
+      await new CodeTokenProvider(rawQuery).recommendApi(Score.KKC);
     }
   }
 }

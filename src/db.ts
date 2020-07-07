@@ -9,7 +9,7 @@ import { join } from 'path';
 
 const dbPath = join(__dirname, 'database', 'RACK-EMSE.db');
 
-export function exec(query: string, parameters = [] as string[]): Promise<Record<string, any>> {
+export function exec<T = object>(query: string, parameters = [] as string[]): Promise<T[]> {
   return new Promise(((resolve, reject) => {
     const db = new Database(dbPath);
     db.all(query, parameters, (err, rows) => {
