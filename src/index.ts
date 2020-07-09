@@ -2,7 +2,7 @@ import { Command, flags } from '@oclif/command';
 import CodeTokenProvider, { Score } from './core/CodeTokenProvider';
 
 class RackNode extends Command {
-  static description = 'describe the command here'
+  static description = 'write like human, search like computer'
 
   static flags = {
     // add --version flag to show CLI version
@@ -14,6 +14,11 @@ class RackNode extends Command {
       description: 'the scoring to order suggestion',
       default: 'all',
       options: ['kac', 'kkc', 'all'],
+    }),
+    quiet: flags.boolean({
+      char: 'q',
+      description: 'only list the APIs',
+      default: false,
     }),
   }
 
@@ -33,7 +38,14 @@ class RackNode extends Command {
       score = Score.ALL;
     }
     const rawQuery = args.query.substr('--query='.length);
-    this.log(await new CodeTokenProvider(rawQuery).recommendApi(score));
+    const result = await new CodeTokenProvider(rawQuery).recommendApi(score);
+    let message;
+    if (flags.quiet) {
+      message = result.map(([api]) => api).join(' ');
+    } else {
+      message = result.map(([token, score]) => `${token}: ${score}`).join('\n');
+    }
+    this.log(message);
   }
 }
 

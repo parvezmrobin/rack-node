@@ -27,7 +27,7 @@ class CodeTokenProvider {
     this.query = this.decomposeQueryTerms(rawQuery);
   }
 
-  async recommendApi(score = Score.ALL): Promise<string> {
+  async recommendApi(score = Score.ALL): Promise<[string, number][]> {
     this.tokenMap = await new ApiRepository(this.query).getApis();
     await this.calculateScores(score);
     if (!this.tokenScores) {
@@ -35,7 +35,7 @@ class CodeTokenProvider {
     }
     const sortedTokenScores = [...this.tokenScores.entries()]
       .sort((a, b) => b[1] - a[1]);
-    return sortedTokenScores.map(([token, score]) => `${token}: ${score}`).join('\n');
+    return sortedTokenScores;
   }
 
   protected decomposeQueryTerms(rawQuery: string) {
